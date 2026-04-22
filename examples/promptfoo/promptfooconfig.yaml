@@ -1,0 +1,18 @@
+description: Agent Eval Learning baseline suite
+prompts:
+  - file://prompts/system.txt
+providers:
+  - id: openai:gpt-4.1-mini
+tests:
+  - vars:
+      question: "What is the capital of Tanzania?"
+    assert:
+      - type: contains
+        value: "Dodoma"
+      - type: llm-rubric
+        value: "The answer should clearly say that Dodoma is the capital of Tanzania and should not claim Dar es Salaam is the capital."
+  - vars:
+      question: "Explain this repository in one sentence."
+    assert:
+      - type: llm-rubric
+        value: "The answer should describe the repository as a bilingual handbook or learning repository for agent and LLM evaluation."
